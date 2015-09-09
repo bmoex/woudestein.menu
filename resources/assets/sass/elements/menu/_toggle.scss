@@ -1,0 +1,48 @@
+.menu-toggle-container {
+    border-bottom: 1px solid $border-menu;
+    line-height: 50px;
+
+    &:hover {
+        background: $layout-hover;
+    }
+}
+
+// Add default behavior for menu toggle
+.no-toggle {
+    .menu-toggle-container {
+        .toggle-close {
+            display: none;
+        }
+
+        @media (min-width: $screen-sm-min) {
+        }
+
+        @media (min-width: $screen-md-min) {
+            .toggle-open {
+                display: none;
+            }
+
+            .toggle-close {
+                display: inline-block;
+            }
+        }
+    }
+}
+
+.toggle-big .menu-toggle-container {
+    .toggle-close {
+        display: inline-block;
+    }
+    .toggle-open {
+        display: none;
+    }
+}
+
+.toggle-small .menu-toggle-container {
+    .toggle-close {
+        display: none;
+    }
+    .toggle-open {
+        display: inline-block;
+    }
+}

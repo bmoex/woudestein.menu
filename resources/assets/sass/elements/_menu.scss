@@ -1,0 +1,31 @@
+// preset border menu color
+$border-menu: rgba($layout-hover, .3) !default;
+
+.menu-container {
+    // Add colors for menu
+    text-align: center;
+    color: $white;
+
+    .menu-container-background,
+    .menu-toggle-container,
+    .navigation-container{
+        background: $layout-base;
+    }
+
+    .menu-container-background {
+        bottom: -120px;
+        position: fixed;
+        top: 0;
+        z-index: -1;
+    }
+
+    .menu-toggle-container {
+        @include user-select(none);
+        cursor: pointer;
+        outline: 0;
+    }
+}
+
+// import separate elements
+@import "menu/icon-navigation";
+@import "menu/toggle";

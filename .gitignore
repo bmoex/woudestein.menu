@@ -1,4 +1,6 @@
-/bootstrap/compiled.php
-.env.*.php
-.env.php
+/vendor
+/node_modules
+/public/css
+/public/js/all.js
 .env
+_ide_helper.php

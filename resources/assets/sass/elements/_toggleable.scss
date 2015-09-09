@@ -1,0 +1,11 @@
+.toggleable {
+    .toggle-content {
+        display: none;
+    }
+
+    &.active {
+        > .toggle-content {
+            display: block;
+        }
+    }
+}

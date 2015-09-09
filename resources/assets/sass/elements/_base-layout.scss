@@ -1,0 +1,141 @@
+$menu-width-xs: 40px;
+$menu-width-sm: 70px;
+$menu-width-md: 140px;
+
+@mixin applyMenuTransition() {
+    transition-property: all;
+    transition-duration: .5s;
+    transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.serfhos-container {
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+
+.content-left-container {
+    .menu-container {
+        @include applyMenuTransition();
+        width: $menu-width-xs;
+        float: left;
+        z-index: 9;
+
+        position: absolute;
+        overflow-x: scroll;
+        height: 100%;
+    }
+
+    .menu-container-background {
+        @include applyMenuTransition();
+        width: $menu-width-xs;
+    }
+}
+
+.content-right-container,
+.content-footer-container {
+    @include applyMenuTransition();
+    margin-left: $menu-width-xs;
+}
+
+.content-right-container {
+    height: 100%;
+
+    .content-right-inner-container {
+        float: left;
+        height: 100%;
+        width: 100%;
+    }
+
+    .content-outer-container {
+        position: relative;
+    }
+
+    .content-container {
+        float: left;
+        overflow: visible;
+        padding-bottom: 65px;
+        width: 100%;
+    }
+}
+
+@media (min-width: $screen-sm-min) {
+    .content-left-container {
+        .menu-container {
+            width: $menu-width-sm;
+        }
+
+        .menu-container-background {
+            width: $menu-width-sm;
+        }
+    }
+
+    .content-right-container,
+    .content-footer-container {
+        margin-left: $menu-width-sm;
+    }
+}
+
+@media (min-width: $screen-md-min) {
+    .content-left-container {
+        .menu-container {
+            width: $menu-width-md;
+        }
+
+        .menu-container-background {
+            width: $menu-width-md;
+        }
+    }
+
+    .content-right-container,
+    .content-footer-container {
+        margin-left: $menu-width-md;
+    }
+}
+
+// Add toggle functionality for each sizes
+
+.toggle-big.serfhos-container {
+    .content-left-container {
+        .menu-container {
+            width: $menu-width-md;
+        }
+
+        .menu-container-background {
+            width: $menu-width-md;
+        }
+    }
+
+    @media (min-width: $screen-sm-min) {
+        .content-right-container,
+        .content-footer-container {
+            margin-left: $menu-width-md;
+        }
+    }
+}
+
+.toggle-small.serfhos-container {
+    .content-left-container {
+        .menu-container {
+            width: $menu-width-xs;
+        }
+
+        .menu-container-background {
+            width: $menu-width-xs;
+        }
+    }
+
+    @media (min-width: $screen-sm-min) {
+        .content-right-container,
+        .content-footer-container {
+            margin-left: $menu-width-xs;
+        }
+    }
+}
