@@ -206,8 +206,7 @@ class LocationTableSeeder extends Seeder
 
         Location::create([
             'title' => 'Starbucks',
-            'description' => '
-                <h2>Wereldse koffie op een campus van wereldformaat</h2>
+            'description' => '<h2>Wereldse koffie op een campus van wereldformaat</h2>
                 <p>Het is maar een kort moment - gewoon een hand die over de toonbank een andere uitgestoken hand een beker aanreikt. Maar er is connectie.</p>
                 <p>Wij van Starbucks zorgen dat alles wat we doen in het teken staat van die verbinding - van ons streven naar koffie van de beste kwaliteit ter wereld tot de manier waarop we ons samen met onze klanten en omgeving inzetten voor verantwoord zaken doen.</p>
                 <p>Vanaf het begin, met één vestiging bijna 40 jaar geleden, hebben we overal waar we zijn geweest en bij alles wat we aanraken, geprobeerd het wat beter te maken dan we het aantroffen.</p>',

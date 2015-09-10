@@ -30,8 +30,8 @@ class CreateLocationsTable extends Migration
             $table->string('postal_code')->nullable();
             $table->string('city')->nullable();
             $table->string('country')->nullable();
-            $table->float('latitude');
-            $table->float('longitude');
+            $table->decimal('latitude', 10, 7);
+            $table->decimal('longitude', 10, 7);
 
             // Editors and timestamps
             $table->integer('created_by')->index()->unsigned();
