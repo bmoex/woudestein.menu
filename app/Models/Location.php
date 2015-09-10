@@ -35,6 +35,7 @@ class Location extends \Eloquent
      */
     public static function getMapItems($currentRoute = null)
     {
-        return self::all();
+        $locations = static::all();
+        return json_encode($locations);
     }
 }

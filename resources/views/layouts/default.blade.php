@@ -7,7 +7,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
 <div class="serfhos-container no-toggle clearfix">
@@ -22,96 +22,7 @@
             <div class="navigation-container">
                 <nav class="navigation-container-icons">
                     <ul class="icon-navigation">
-                        <li><a href="#">
-                                <div class="navigation-content page-icon"><i
-                                            class="icon fa fa-cutlery"></i></div>
-                                <div class="navigation-content page-label">Bean Square (Theil)</div>
-                            </a></li>
-                        <li><a href="#">
-                                <div class="navigation-content page-icon"><i
-                                            class="icon fa fa-cutlery"></i></div>
-                                <div class="navigation-content page-label">Bean Square (Mandeville)</div>
-                            </a></li>
-                        <li><a href="#">
-                                <div class="navigation-content page-icon"><i
-                                            class="icon fa fa-cutlery"></i></div>
-                                <div class="navigation-content page-label">Bean Square (V)</div>
-                            </a></li>
-                        <li><a href="#">
-                                <div class="navigation-content page-icon"><i
-                                            class="icon fa fa-cutlery"></i></div>
-                                <div class="navigation-content page-label">Café In de Smitse</div>
-                            </a></li>
-                        <li><a href="#">
-                                <div class="navigation-content page-icon"><i
-                                            class="icon fa fa-cutlery"></i></div>
-                                <div class="navigation-content page-label">De Etude</div>
-                            </a></li>
-                        <li><a href="#">
-                                <div class="navigation-content page-icon"><i
-                                            class="icon fa fa-cutlery"></i></div>
-                                <div class="navigation-content page-label">ErasmusFood Plaza</div>
-                            </a></li>
-                        <li><a href="#">
-                                <div class="navigation-content page-icon"><i
-                                            class="icon fa fa-cutlery"></i></div>
-                                <div class="navigation-content page-label">Erasmus Paviljoen</div>
-                            </a></li>
-                        <li><a href="#">
-                                <div class="navigation-content page-icon"><i
-                                            class="icon fa fa-cutlery"></i></div>
-                                <div class="navigation-content page-label">Erasmus Sport Café</div>
-                            </a></li>
-                        <li><a href="#">
-                                <div class="navigation-content page-icon"><i
-                                            class="icon fa fa-cutlery"></i></div>
-                                <div class="navigation-content page-label">Faculty Club</div>
-                            </a></li>
-                        <li><a href="#">
-                                <div class="navigation-content page-icon"><i
-                                            class="icon fa fa-cutlery"></i></div>
-                                <div class="navigation-content page-label">Frozz & Oodlz</div>
-                            </a></li>
-                        <li><a href="#">
-                                <div class="navigation-content page-icon"><i
-                                            class="icon fa fa-cutlery"></i></div>
-                                <div class="navigation-content page-label">Has Döner Kebab</div>
-                            </a></li>
-                        <li><a href="#">
-                                <div class="navigation-content page-icon"><i
-                                            class="icon fa fa-cutlery"></i></div>
-                                <div class="navigation-content page-label">Maria's Cantina</div>
-                            </a></li>
-                        <li><a href="#">
-                                <div class="navigation-content page-icon"><i
-                                            class="icon fa fa-cutlery"></i></div>
-                                <div class="navigation-content page-label">New Fork</div>
-                            </a></li>
-                        <li><a href="#">
-                                <div class="navigation-content page-icon"><i
-                                            class="icon fa fa-cutlery"></i></div>
-                                <div class="navigation-content page-label">Satebar</div>
-                            </a></li>
-                        <li><a href="#">
-                                <div class="navigation-content page-icon"><i
-                                            class="icon fa fa-cutlery"></i></div>
-                                <div class="navigation-content page-label">Starbucks</div>
-                            </a></li>
-                        <li><a href="#">
-                                <div class="navigation-content page-icon"><i
-                                            class="icon fa fa-cutlery"></i></div>
-                                <div class="navigation-content page-label">Supermarkt Spar</div>
-                            </a></li>
-                        <li><a href="#">
-                                <div class="navigation-content page-icon"><i
-                                            class="icon fa fa-cutlery"></i></div>
-                                <div class="navigation-content page-label">The Company</div>
-                            </a></li>
-                        <li><a href="#">
-                                <div class="navigation-content page-icon"><i
-                                            class="icon fa fa-cutlery"></i></div>
-                                <div class="navigation-content page-label">Tosti World</div>
-                            </a></li>
+                        @yield('menu-items')
                     </ul>
                 </nav>
             </div>
@@ -126,9 +37,7 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/libraries/jquery-2.1.4.min.js"><\/script>')</script>
-<script src="js/all.js"></script>
-<script src="//maps.googleapis.com/maps/api/js?signed_in=true&callback=Serfhos.Application.initialize" async
-        defer></script>
-
+<script src="/js/all.js"></script>
+@yield('javascript')
 </body>
 </html>

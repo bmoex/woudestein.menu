@@ -19,6 +19,6 @@ elixir(function (mix) {
     mix.scripts([
         "serfhos-object.js",
         "serfhos-responsive.js",
-        "serfhos-application.js"
+        "serfhos-map.js"
     ]);
 });

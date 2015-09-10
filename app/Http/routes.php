@@ -15,7 +15,12 @@
 Route::group(
     ['before' => 'guest'],
     function () {
-        Route::get('/', 'MapController@index');
+        Route::get('/', array('as' => 'root', 'uses' => 'MapController@index'));
+
+        // Location routes
+        Route::group(['prefix' => 'location'], function () {
+            Route::get('detail/{identifier}', array('as' => 'location-show', 'uses' => 'LocationController@show'));
+        });
     }
 );
 

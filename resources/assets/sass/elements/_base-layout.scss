@@ -2,12 +2,6 @@ $menu-width-xs: 40px;
 $menu-width-sm: 70px;
 $menu-width-md: 140px;
 
-@mixin applyMenuTransition() {
-    transition-property: all;
-    transition-duration: .5s;
-    transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-}
-
 body, html {
     height: 100%;
     width: 100%;
@@ -23,7 +17,7 @@ body, html {
 
 .content-left-container {
     .menu-container {
-        @include applyMenuTransition();
+        @include defaultTransition();
         width: $menu-width-xs;
         float: left;
         z-index: 9;
@@ -34,14 +28,14 @@ body, html {
     }
 
     .menu-container-background {
-        @include applyMenuTransition();
+        @include defaultTransition();
         width: $menu-width-xs;
     }
 }
 
 .content-right-container,
 .content-footer-container {
-    @include applyMenuTransition();
+    @include defaultTransition();
     margin-left: $menu-width-xs;
 }
 
@@ -52,9 +46,6 @@ body, html {
         float: left;
         height: 100%;
         width: 100%;
-    }
-
-    .content-outer-container {
         position: relative;
     }
 
