@@ -18,6 +18,7 @@ elixir(function (mix) {
     mix.sass('app.scss');
     mix.scripts([
         "serfhos-object.js",
+        "serfhos-format.js",
         "serfhos-responsive.js",
         "serfhos-map.js"
     ]);

@@ -24,6 +24,11 @@
         font-size: 15px;
     }
 
+    .custom-icon {
+        width: 25px;
+        max-width: 100%;
+    }
+
     .page-icon {
         padding-top: 15px;
         padding-bottom: 10px;
@@ -42,6 +47,10 @@
             font-size: 30px;
         }
 
+        .custom-icon {
+            width: 50px;
+        }
+
         .page-icon {
             padding-bottom: 5px;
         }
@@ -57,6 +66,10 @@
         font-size: 30px;
     }
 
+    .custom-icon {
+        width: 50px;
+    }
+
     .page-icon {
         padding-bottom: 5px;
     }
@@ -69,6 +82,10 @@
 .toggle-small .icon-navigation {
     .icon {
         font-size: 15px;
+    }
+
+    .custom-icon {
+        width: 25px;
     }
 
     .page-icon {

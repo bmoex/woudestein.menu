@@ -1,12 +1,35 @@
+/**
+ * Map Application
+ *
+ * @type Object
+ */
 Serfhos.Map = {
+
     /**
      * @var google.maps.Map
      */
     container: null,
+
     /**
      * @var Array
      */
     markers: [],
+
+    /**
+     * @var Array
+     */
+    renderedMarkers: [],
+
+    /**
+     * @var Serfhos.Format
+     */
+    formatListItem: null,
+
+    /**
+     * @var Serfhos.Format
+     */
+    formatContent: null,
+
 
     /**
      * Initialize application
@@ -14,10 +37,24 @@ Serfhos.Map = {
      * @return void
      */
     initialize: function () {
-        Serfhos.Map.createMap();
+        Serfhos.Map.setTemplates();
+    },
 
-        // Invoke after creation, correct marker icon size
-        Serfhos.Map.updateMarkerIconSize();
+    /**
+     * Set templates from content objects if available
+     *
+     * @return void
+     */
+    setTemplates: function () {
+        var listContainer = jQuery('.navigation-container');
+        if (listContainer.length > 0) {
+            Serfhos.Map.formatListItem = new Serfhos.Format(listContainer);
+        }
+
+        var contentContainer = jQuery('#content-container');
+        if (contentContainer.length > 0) {
+            Serfhos.Map.formatContent = new Serfhos.Format(contentContainer);
+        }
     },
 
     /**
@@ -52,7 +89,10 @@ Serfhos.Map = {
         google.maps.event.addListener(Serfhos.Map.container, 'zoom_changed', Serfhos.Map.updateMarkerIconSize);
 
         // Update all markers to use this map
+        Serfhos.Map.renderMarkers();
 
+        // Invoke after creation, correct marker icon size
+        Serfhos.Map.updateMarkerIconSize();
     },
 
     /**
@@ -71,12 +111,12 @@ Serfhos.Map = {
         }
         var iconAnchor = Math.ceil(iconSize / 2);
         jQuery(Serfhos.Map.markers).each(function (id) {
-            var marker = Serfhos.Map.markers[id];
+            var marker = Serfhos.Map.renderedMarkers[id];
             if (marker) {
                 var icon = marker.getIcon();
                 icon.anchor = new google.maps.Point(iconAnchor, iconAnchor);
                 icon.scaledSize = new google.maps.Size(iconSize, iconSize);
-                console.log(iconSize);
+
                 marker.setIcon(icon);
             }
         });
@@ -91,8 +131,10 @@ Serfhos.Map = {
     addMarkers: function (markers) {
         if (typeof markers == 'object') {
             jQuery(markers).each(function (index, element) {
-                // @todo
-                //Serfhos.Map.addMarker(element.id, element.title, {lat: element.latitude, lang: element.longitude}, element.icon);
+                Serfhos.Map.addMarker(element.id, element.title, {
+                    lat: element.latitude,
+                    lang: element.longitude
+                }, element.icon);
             });
         }
     },
@@ -108,20 +150,47 @@ Serfhos.Map = {
      */
     addMarker: function (id, title, position, icon) {
         if (!icon || icon.length < 3) {
-            icon = '/icons/unknown.svg'
+            icon = '/images/icons/unknown.svg'
         }
 
-        Serfhos.Map.markers[id] = new google.maps.Marker({
+        // Set in marker cache
+        Serfhos.Map.markers[id] = {
             position: position,
-            map: Serfhos.Map.container,
             title: title,
-            icon: {
-                url: icon,
-                size: new google.maps.Size(512, 512),
-                origin: new google.maps.Point(0, 0),
-                anchor: new google.maps.Point(15, 15),
-                scaledSize: new google.maps.Size(30, 30)
+            icon: icon
+        };
+
+        if (typeof Serfhos.Map.formatListItem == 'object') {
+            Serfhos.Map.formatListItem.addContent({
+                title: title,
+                icon: '<img src="' + icon + '" class="custom-icon"/>',
+            });
+        }
+    },
+
+    /**
+     * @return void
+     */
+    renderMarkers: function () {
+        jQuery(Serfhos.Map.markers).each(function (index, marker) {
+            // Only render if id is not yet rendered..
+            if (Serfhos.Map.renderedMarkers[index] == 'undefined') {
+                Serfhos.Map.renderedMarkers[index] = new google.maps.Marker({
+                    position: marker.position,
+                    map: Serfhos.Map.container,
+                    title: marker.title,
+                    icon: {
+                        url: marker.icon,
+                        size: new google.maps.Size(512, 512),
+                        origin: new google.maps.Point(0, 0),
+                        anchor: new google.maps.Point(15, 15),
+                        scaledSize: new google.maps.Size(30, 30)
+                    }
+                });
             }
         });
     }
 };
+
+// Invoke initialize to be sure data is configured
+Serfhos.Map.initialize();
