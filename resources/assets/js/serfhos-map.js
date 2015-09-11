@@ -132,8 +132,8 @@ Serfhos.Map = {
         if (typeof markers == 'object') {
             jQuery(markers).each(function (index, element) {
                 Serfhos.Map.addMarker(element.id, element.title, {
-                    lat: element.latitude,
-                    lang: element.longitude
+                    lat: parseFloat(element.latitude),
+                    lng: parseFloat(element.longitude)
                 }, element.icon);
             });
         }
@@ -172,23 +172,30 @@ Serfhos.Map = {
      * @return void
      */
     renderMarkers: function () {
-        jQuery(Serfhos.Map.markers).each(function (index, marker) {
-            // Only render if id is not yet rendered..
-            if (Serfhos.Map.renderedMarkers[index] == 'undefined') {
-                Serfhos.Map.renderedMarkers[index] = new google.maps.Marker({
-                    position: marker.position,
-                    map: Serfhos.Map.container,
-                    title: marker.title,
-                    icon: {
-                        url: marker.icon,
-                        size: new google.maps.Size(512, 512),
-                        origin: new google.maps.Point(0, 0),
-                        anchor: new google.maps.Point(15, 15),
-                        scaledSize: new google.maps.Size(30, 30)
+        if (typeof Serfhos.Map.container !== 'undefined') {
+            var markers = Serfhos.Map.markers;
+
+            // loop through all markers
+            for (var key in markers) {
+                if (markers.hasOwnProperty(key)) {
+                    var marker = markers[key];
+                    if (typeof Serfhos.Map.renderedMarkers[key] == 'undefined') {
+                        Serfhos.Map.renderedMarkers[key] = new google.maps.Marker({
+                            position: marker.position,
+                            map: Serfhos.Map.container,
+                            title: marker.title,
+                            icon: {
+                                url: marker.icon,
+                                size: new google.maps.Size(512, 512),
+                                origin: new google.maps.Point(0, 0),
+                                anchor: new google.maps.Point(15, 15),
+                                scaledSize: new google.maps.Size(30, 30)
+                            }
+                        });
                     }
-                });
+                }
             }
-        });
+        }
     }
 };
 

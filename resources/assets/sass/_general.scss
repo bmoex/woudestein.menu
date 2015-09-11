@@ -12,6 +12,8 @@ a, div {
 }
 
 #content-container {
+    @include defaultTransition();
+    display: none;
     position: absolute;
     left: 0;
     top: 0;
