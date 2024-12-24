@@ -1,26 +1,13 @@
 <?php
+
 namespace App\Http\Controllers;
 
-use App\Models\Location;
-use View;
+use Inertia\Inertia;
 
-/**
- * Controller: Map
- *
- * @package App\Http\Controllers
- */
 class MapController extends Controller
 {
-
-    /**
-     * Default map output
-     *
-     * @return \Illuminate\Contracts\View\View
-     */
-    public function index()
+    public function __invoke()
     {
-        return View::make('map/index', [
-            'locations' => Location::getMapItems(),
-        ]);
+        return Inertia::render('Map');
     }
 }
